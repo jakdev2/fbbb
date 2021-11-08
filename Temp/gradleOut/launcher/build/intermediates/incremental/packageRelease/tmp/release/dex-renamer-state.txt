@@ -1,0 +1,4 @@
+#Mon Nov 08 00:50:46 CET 2021
+base.0=D\:\\GithubCopFB\\Flappy Bird again but with github copilot this time\\Temp\\gradleOut\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
