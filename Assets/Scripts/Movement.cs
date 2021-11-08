@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     // update is called once per frame
     void Update()
     {
-        gameObject.transform.Translate(Vector2.left * 3 * Time.deltaTime);
+        gameObject.transform.Translate(Vector2.left * 5 * Time.deltaTime);
     }
 
     //when it collides with "square"

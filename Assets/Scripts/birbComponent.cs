@@ -7,13 +7,18 @@ using UnityEngine;
 
 public class birbComponent : MonoBehaviour
 {
-    public bool ded = false;
+    private bool ded = false;
+    public int points;
+    public int highscore;
+    public int newHighscore;
 
     //void start is called before the first frame update
     void Start()
     {
         //pause time
         Time.timeScale = 0;
+
+        ded = false;
     }
     // Update is called once per frame
     void Update()
@@ -26,6 +31,11 @@ public class birbComponent : MonoBehaviour
                 //timescale = 1
                 Time.timeScale = 1;
             }
+
+            if (Input.GetKeyDown(KeyCode.Return) | Input.GetKeyDown(KeyCode.P))
+            {
+                Time.timeScale = 0;
+            }
         }
 
         if (ded)
@@ -35,6 +45,15 @@ public class birbComponent : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+
+            if (points > highscore)
+            {
+                highscore = points;
+                Debug.Log("New Highscore: " + highscore);
+            }
+
+            if(PlayerPrefs.GetInt("score")<=highscore);
+            PlayerPrefs.SetInt("highscore", highscore);
         }
     }
 
@@ -47,5 +66,32 @@ public class birbComponent : MonoBehaviour
             //set ded to true
             ded = true;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!ded)
+        {
+            //add points
+            points++;
+            //print points to console
+            Debug.Log("Points: " + points);
+        }
+        if (ded)
+        {
+
+        }
+    }
+
+    void Awake()
+    {
+        //load newhighscore
+        highscore = PlayerPrefs.GetInt("highscore", 0);
+    }
+
+    //save highscore
+    public void highscorebruh()
+    {
+
     }
 }
